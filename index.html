@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Weather App</title>
+  
+  <meta name="description" content="A simple Weather App that shows real-time temperature, humidity, and wind speed for any city using the OpenWeather API, with offline detection, error handling, and last city memory." />
+  <meta name="keywords" content="weather app, weather, temperature, humidity, wind speed" />
+  <meta name="author" content="Aderogba Adedamola" />
+  <meta property="og:author" content="Aderogba Adedamola" />
+  <meta property="og:title" content="Weather App" />
+  <meta property="og:description" content="A simple Weather App that shows real-time temperature, humidity, and wind speed for any city using the OpenWeather API, with offline detection, error handling, and last city memory." />
+  <meta property="og:url" content="https://aderogbaadedamola.github.io/Weather-App/" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="header">
+    <h1>☁️ Weather</h1>
+  </div>
+  <div class="container">
+    <div class="input-section">
+      <div>
+      <input type="text" id="input" placeholder="Enter a location...">
+      
+      <button id="search" >Search</button>
+      </div>
+      <p id="inputError"></p>
+      <ul class="suggestions" role="listbox" aria-label="Location suggestions">
+      </ul>
+      <ul id="loadingList">
+           <li class="loadingList">
+             <div></div>
+           </li>
+           <li class="loadingList">
+             <div></div>
+           </li>
+           <li class="loadingList">
+             <div></div>
+           </li>
+           <li class="loadingList">
+             <div></div>
+           </li>
+           <li class="loadingList">
+             <div></div>
+           </li>
+      </ul>
+    </div>
+    <div class="weather-container">
+      <div class="weather-placeholder">
+        Weather Info will appear here
+      </div>
+      <div class="loader">
+        <div class="background">
+        <div class="roller"></div>
+        </div>
+      </div>
+      <div class="value-container">
+      <h2 class="weather-info">Weather Info</h2>
+      <p>
+        <span class="label">City:</span>
+        <span id="cityName"></span> 
+      </p>
+      <p >
+        <span class="label">🌡 Temperature:</span>
+        <span id="temperature">°C</span>
+      </p>
+      <p>
+        <span class="label">💧 Humidity:</span> 
+        <span id="humidity">%</span>
+      </p>
+      <p>
+        <span class="label">💨 Wind Speed:</span> 
+        <span id="windSpeed">m/s</span>
+      </p>
+      <p>
+        <span class="label">☁ Condition: </span> 
+        <span id="condition"></span>
+      </p>
+      </div>
+      <div id="errorMessage"></div>
+    </div>
+  </div>
+   <div id="offlineMessage">
+     ❌📶  You are offline. Please check your Internet. 
+   </div>
+   <div id="onlineMessage">
+     📶  You are now online.  
+   </div>
+   
+   <div id="media">
+     <p>
+      <a href="https://github.com/AderogbaAdedamola" target="_blank"  id="media-link">
+       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"> <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/> </svg>
+           </a></p>
+     <p>Aderogba Adedamola</p>
+   </div>
+  <script src="main.js"></script>
+</body>
+</html>
