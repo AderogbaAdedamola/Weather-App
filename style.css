@@ -1,0 +1,314 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body{
+  min-height: 100dvh;
+  background:linear-gradient(135deg,#F4F7FFDB, #FFEBE2ED,#F4F7FFDB);
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-size: 400% 400%;
+  
+  animation: lightShift 10s ease-in-out infinite;
+}
+
+@keyframes lightShift {
+  0%   { background-position: 0% 0%; }
+  25%  { background-position: 100% 0%; }
+  50%  { background-position: 100% 100%; }
+  75%  { background-position: 0% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.header{
+  display: flex;
+  width: 100%;
+}
+.header>h1{
+  margin: 10px;
+}
+.input-section{
+  display: flex;
+  margin: 30px 10px 10px;
+  gap: 10px;
+  position: relative;
+}
+#input{
+  width: 200px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+}
+#search{
+  width: 85px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #2bc8ff;
+  cursor: pointer;
+}
+#inputError{
+  position:absolute;
+    left:0;
+    right: 0;
+    color: red;
+    top:calc(100% + 5px);
+    z-index:10;
+    font-size: 0.8em;
+    }
+ .suggestions{
+    position:absolute;
+    left:0;
+    right: 0;
+    top:calc(100% + 20px);
+    border:1px solid #e5e5e5;
+    border-radius:10px;
+    max-height:350px;
+    overflow:auto;
+    box-shadow:0 10px 24px rgba(0,0,0,0.08);
+    z-index:10;
+    background: rgba(255, 255, 255, 0.8);
+    display: none;
+    }
+#loadingList{
+    position:absolute;
+    left:0;
+    right: 0;
+    top:calc(100% + 20px);
+    border:1px solid #e5e5e5;
+    border-radius:10px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.08);
+    z-index:10;
+    background: rgba(255, 255, 255, 0.8);
+    list-style: none;
+    display: none;
+}
+ 
+#loadingList .loadingList{
+      padding: 10px;
+      border-bottom: 1px solid black;
+ }
+#loadingList .loadingList:hover{
+    background: #f0f0f0;
+}
+
+#loadingList div{
+  width: 100%;
+  height: 20px;
+  border-radius: 15px;
+  background: linear-gradient(130deg,#BAE4FFB0,#BAE4FFB0,#BAE4FFB0, transparent,#BAE4FFB0,#BAE4FFB0,#BAE4FFB0);
+  background-size: 400% 400%;
+  animation: loadingList 3s ease infinite;
+
+}
+@keyframes loadingList{
+  0%{
+    background-position: 100% 100%;
+    opacity: 0.5;
+  }
+  50%{opacity: 1;}
+  100%{
+    background-position: 0% 100%;
+    opacity: 0.5;
+  }
+}
+.suggestions li {
+      padding: 12.5px;
+      cursor: pointer;
+      border-bottom: 1px solid black;
+    }
+.suggestions li:hover {
+      background: #f0f0f0;
+    }
+
+.weather-container{
+  width: 300px;
+  height: 300px;
+  background: white;
+  border: 1px solid black;
+  margin: 70px 10px;
+  border-radius: 10px;
+  box-shadow:0 0 15px #a1a1a1;
+  font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.value-container {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
+  justify-content: center;
+  position: relative;
+  display: none;
+}
+.weather-info{
+  position: absolute;
+  animation:headerTop 0.5s ease-in;
+  left: 10px;
+  background: linear-gradient(to bottom,transparent, white);
+  text-align: center;
+  font-size: 1.4em;
+  width: 150px;
+  top: -15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+@keyframes headerTop{
+  from{top: -55px;}
+  to{top: -15px;}
+}
+.weather-placeholder{
+  color: #a1a1a1;
+  text-align: center;
+  margin: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+#cityName{
+  font-weight: bold;
+  font-size: 20pt;
+  margin-left: 40px;
+}
+.weather-container p:nth-child(3),
+.weather-container p:nth-child(4),
+.weather-container p:nth-child(5),
+.weather-container p:nth-child(6){
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-container p:nth-child(3){
+  font-size: 1.2em;
+  font-weight: bold;
+}
+ .label:nth-child(1){
+   position: relative;
+   animation:toLeft 0.5s ease-in;
+   }
+ .label:nth-child(2){
+   position: relative;
+   animation:toLeft 0.5s ease-in;
+   }
+ .label:nth-child(3){
+   position: relative;
+   animation:toLeft 0.5s ease-in;
+ }
+ #cityName{
+   position: relative;
+   animation:toTop 0.5s ease-in;
+ }
+ #temperature{
+   position: relative;
+   animation:toRight 0.5s ease-in;
+ } 
+ #humidity{
+  position: relative;
+  animation: toRight 0.5s ease-in;
+} 
+#windSpeed{
+  position: relative;
+  animation: toRight 0.5s ease-in;
+}
+#condition {
+  animation: opacityChange 1s ease-in;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.9em;
+  color: #2bc8ff;
+}
+ @keyframes toRight{
+   from{right: -40px;}
+   to{right: 0;}
+ }
+ @keyframes toLeft{
+   from{left: -40px;}
+   to{left: 0;}
+ }
+ @keyframes toTop{
+   from{top: -40px;}
+   to{top: 0;}
+ }
+  @keyframes opacityChange{
+   from{opacity: 0;}
+   to{opacity: 1;}
+ }
+ .loader{
+   width: 100%;
+   justify-content: center;
+   display: none;
+ }
+ .loader .background{
+   height: 60px;
+   width: 60px;
+   border-radius: 5px;
+   background: rgba(161, 161, 161, 0.5);
+   backdrop-filter: blur(10px);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ .loader .roller{
+   width: 40px;
+   height: 40px;
+   border: 5px solid white;
+   border-top: 5px solid #2bc8ff;
+   border-radius: 50%;
+   animation: loader 1s 0s ease-in-out infinite;
+   
+ }
+ @keyframes loader{
+   to{transform: rotate(360deg)}
+ }
+ #errorMessage {
+   width: 100%;
+   text-align: center;
+   color: red;
+   font-family: 'Courier New', Courier, monospace;
+   font-weight: bold;
+   padding: 10px;
+   display: none;
+ }
+ .errorMessage-online{
+   color: green;
+ }
+ #offlineMessage{
+   width: 100%;
+   background-color: #444444;
+   color: white;
+   text-align: center;
+   padding: 10px;
+   position: fixed;
+   bottom: -40px;
+   transition: bottom 0.5s ease-in-out;
+ }
+  #onlineMessage{
+   width: 100%;
+   background-color: green;
+   color: white;
+   text-align: center;
+   padding: 10px;
+   position: fixed;
+   bottom: -40px;
+   transition: bottom 0.5s ease-in-out;
+ }
+ #media-link{
+   color: black;
+ }
+ #media p:nth-child(1){
+   display: flex;
+   width: 100%;
+   justify-content: center;
+ }
+ #media p:nth-child(2){
+   font-size: 1.2em;
+ }
