@@ -1,6 +1,5 @@
 const searchBtn = document.getElementById("search");
 const input = document.getElementById("input");
-searchList = document.querySelector(".search-list");
 const weatherContainer = document.querySelector(".weather-container");
 const weatherPlaceholder = document.querySelector(".weather-placeholder");
 const valueContainer = document.querySelector(".value-container");
