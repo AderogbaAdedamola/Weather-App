@@ -155,7 +155,7 @@ input.addEventListener("input", async () => {
   if (query.length < 2) {
     suggestions.style.display = "none";
     suggestions.innerHTML = "";
-    weatherContainer.style.display = "flex";
+    weatherContainer.style.visibility = "visible";
     return;
   }
   const url = `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`;
@@ -191,6 +191,8 @@ input.addEventListener("input", async () => {
   });
   } catch (error) {
     inputError.style.display = "block";
+    loadingList.style.display = "none";
+    toggleWeatherInfo();
     if (!navigator.onLine) {
       inputError.innerHTML = "You are Offline. Suggestion is not available";
     }
@@ -214,9 +216,9 @@ function toggleWeatherInfo() {
     loadingList.style.display === "block" ||
     suggestions.style.display === "block"
   ) {
-    weatherContainer.style.display = "none"; // hide weather info
+    weatherContainer.style.visibility = "hidden"; // hide weather info
   } else {
-    weatherContainer.style.display = "flex"; // show weather info
+    weatherContainer.style.visibility = "visible"; // show weather info
   }
 }
 
